@@ -46,6 +46,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attributes | Debugging")
 	TArray<TSubclassOf<class UGameplayAbility>> DebuggingPassiveAbilities;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attributes ")
+	TArray<TSubclassOf<class UGameplayAbility>> StartingPassiveAbilities;
 	
 
 	

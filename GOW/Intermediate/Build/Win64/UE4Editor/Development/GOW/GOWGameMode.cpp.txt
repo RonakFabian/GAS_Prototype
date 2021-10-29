@@ -1,11 +1,11 @@
-E:\GAS_Prototype\GOW\Intermediate\Build\Win64\UE4Editor\Development\GOW\Definitions.GOW.h
-E:\GAS_Prototype\GOW\Source\GOW\GOWGameMode.h
+E:\GAS_Prototype_GIT\GOW\Intermediate\Build\Win64\UE4Editor\Development\GOW\Definitions.GOW.h
+E:\GAS_Prototype_GIT\GOW\Source\GOW\GOWGameMode.h
 E:\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/GameModeBase.h
 E:\UE_4.26\Engine\Source\Runtime\Engine\Classes\Engine/ServerStatReplicator.h
 E:\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ServerStatReplicator.generated.h
 E:\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameModeBase.generated.h
-E:\GAS_Prototype\GOW\Intermediate\Build\Win64\UE4Editor\Inc\GOW\GOWGameMode.generated.h
-E:\GAS_Prototype\GOW\Source\GOW\GOWCharacter.h
+E:\GAS_Prototype_GIT\GOW\Intermediate\Build\Win64\UE4Editor\Inc\GOW\GOWGameMode.generated.h
+E:\GAS_Prototype_GIT\GOW\Source\GOW\GOWCharacter.h
 E:\UE_4.26\Engine\Plugins\Runtime\GameplayAbilities\Source\GameplayAbilities\Public\AbilitySystemInterface.h
 E:\UE_4.26\Engine\Plugins\Runtime\GameplayAbilities\Intermediate\Build\Win64\UE4Editor\Inc\GameplayAbilities\AbilitySystemInterface.generated.h
 E:\UE_4.26\Engine\Source\Runtime\Engine\Classes\Engine/DataTable.h
@@ -17,4 +17,4 @@ E:\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CharacterMovemen
 E:\UE_4.26\Engine\Source\Runtime\Engine\Classes\GameFramework/RootMotionSource.h
 E:\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\RootMotionSource.generated.h
 E:\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Character.generated.h
-E:\GAS_Prototype\GOW\Intermediate\Build\Win64\UE4Editor\Inc\GOW\GOWCharacter.generated.h
+E:\GAS_Prototype_GIT\GOW\Intermediate\Build\Win64\UE4Editor\Inc\GOW\GOWCharacter.generated.h

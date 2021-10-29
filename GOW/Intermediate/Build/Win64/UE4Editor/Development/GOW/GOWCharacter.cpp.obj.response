@@ -233,8 +233,8 @@
 /I ..\Plugins\Runtime\GameplayAbilities\Intermediate\Build\Win64\UE4Editor\Inc\GameplayAbilities
 /I ..\Plugins\Runtime\GameplayAbilities\Source
 /I ..\Plugins\Runtime\GameplayAbilities\Source\GameplayAbilities\Public
-/I E:\GAS_Prototype\GOW\Intermediate\Build\Win64\UE4Editor\Inc\GOW
-/I E:\GAS_Prototype\GOW\Source
+/I E:\GAS_Prototype_GIT\GOW\Intermediate\Build\Win64\UE4Editor\Inc\GOW
+/I E:\GAS_Prototype_GIT\GOW\Source
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\AugmentedReality
 /I Runtime\AugmentedReality\Public
 /I ..\Intermediate\Build\Win64\UE4Editor\Inc\MRMesh
@@ -268,12 +268,12 @@
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"
 /I "C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"
-/FI"E:\GAS_Prototype\GOW\Intermediate\Build\Win64\GOWEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Yu"E:\GAS_Prototype\GOW\Intermediate\Build\Win64\GOWEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
-/Fp"E:\GAS_Prototype\GOW\Intermediate\Build\Win64\GOWEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
-"E:\GAS_Prototype\GOW\Source\GOW\GOWCharacter.cpp"
-/FI"E:\GAS_Prototype\GOW\Intermediate\Build\Win64\UE4Editor\Development\GOW\Definitions.GOW.h"
-/Fo"E:\GAS_Prototype\GOW\Intermediate\Build\Win64\UE4Editor\Development\GOW\GOWCharacter.cpp.obj"
+/FI"E:\GAS_Prototype_GIT\GOW\Intermediate\Build\Win64\GOWEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Yu"E:\GAS_Prototype_GIT\GOW\Intermediate\Build\Win64\GOWEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h"
+/Fp"E:\GAS_Prototype_GIT\GOW\Intermediate\Build\Win64\GOWEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.pch"
+"E:\GAS_Prototype_GIT\GOW\Source\GOW\GOWCharacter.cpp"
+/FI"E:\GAS_Prototype_GIT\GOW\Intermediate\Build\Win64\UE4Editor\Development\GOW\Definitions.GOW.h"
+/Fo"E:\GAS_Prototype_GIT\GOW\Intermediate\Build\Win64\UE4Editor\Development\GOW\GOWCharacter.cpp.obj"
 /TP
 /GR-
 /W4
