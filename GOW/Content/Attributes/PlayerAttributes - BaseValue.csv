@@ -1,0 +1,4 @@
+Name,BaseValue,MinValue,MaxValue,DerivedAttributeInfo,bCanStack
+PlayerAttributes.Speed,600,75,1200,,FALSE
+PlayerAttributes.Health,100,0,1000,,FALSE
+PlayerAttributes.Damage,1,1,100,,FALSE

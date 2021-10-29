@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\GOW.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{55FD1401-107A-4CA7-B610-3D501768D1BD}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\GOW.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\GOWEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{EB2AF167-6EFF-40C1-9952-5D7D49D5AAE1}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\GOW">
+      <UniqueIdentifier>{7E525255-3FCC-44E4-B176-0E60917DE401}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\GOW\GOW.Build.cs">
+      <Filter>Source\GOW</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\GOW\GOW.cpp">
+      <Filter>Source\GOW</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GOW\GOW.h">
+      <Filter>Source\GOW</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GOW\GOWCharacter.cpp">
+      <Filter>Source\GOW</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GOW\GOWCharacter.h">
+      <Filter>Source\GOW</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GOW\GOWGameMode.cpp">
+      <Filter>Source\GOW</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GOW\GOWGameMode.h">
+      <Filter>Source\GOW</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\GOW\PlayerAttributes.cpp">
+      <Filter>Source\GOW</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\GOW\PlayerAttributes.h">
+      <Filter>Source\GOW</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "GOW",
+			"Path": "E:\\GAS_Prototype\\GOW\\Source\\GOW.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "GOWEditor",
+			"Path": "E:\\GAS_Prototype\\GOW\\Source\\GOWEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
