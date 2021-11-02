@@ -3,12 +3,19 @@
 #include "GOWCharacter.h"
 
 #include "AbilitySystemComponent.h"
+#include "GASAttributeSet.h"
+#include "GASGameplayAbility.h"
+#include "Abilities/GameplayAbility.h"
+
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
-#include "PlayerAttributes.h"
+
+#include "GOW.h"
+
+#include "GameplayEffectTypes.h"
 #include "GameFramework/SpringArmComponent.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -46,7 +53,11 @@ AGOWCharacter::AGOWCharacter()
 	// Attach the camera to the end of the boom and let the boom adjust to match the controller orientation
 	FollowCamera->bUsePawnControlRotation = false; // Camera does not rotate relative to arm
 
-	AbilitySystem = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystem"));
+	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystem"));
+	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Minimal);
+
+	Attributes= CreateDefaultSubobject<UGASAttributeSet>("Attributes");
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
@@ -67,42 +78,96 @@ void AGOWCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInput
 
 	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
+
+	if(AbilitySystemComponent && InputComponent)
+	{
+		const FGameplayAbilityInputBinds Binds
+		("Confirm",
+			"Cancel",
+			"EGASAbilityInputID",
+			static_cast<int32>(EGASAbilityInputID::Confirm),
+			static_cast<int32>(EGASAbilityInputID::Cancel)
+		);
+
+		AbilitySystemComponent->BindAbilityActivationToInputComponent(InputComponent,Binds);
+	}
+	
 }
 
 UAbilitySystemComponent* AGOWCharacter::GetAbilitySystemComponent() const
 {
-	return  AbilitySystem;
+	return  AbilitySystemComponent;
 }
 
+
+void AGOWCharacter::InitializeAttributes()
+{
+	if(AbilitySystemComponent&& DefaultAttributeEffect)
+	{
+		FGameplayEffectContextHandle EffectContextHandle = AbilitySystemComponent->MakeEffectContext();
+		EffectContextHandle.AddSourceObject(this);
+
+		FGameplayEffectSpecHandle SpecHandle= AbilitySystemComponent->MakeOutgoingSpec(DefaultAttributeEffect,1,EffectContextHandle);
+
+		if(SpecHandle.IsValid())
+		{
+			FActiveGameplayEffectHandle GEHandle=AbilitySystemComponent->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
+		}
+	}
+	
+}
+
+void AGOWCharacter::GiveAbilities()
+{
+	if(HasAuthority() && AbilitySystemComponent )
+	{
+		for(TSubclassOf<UGASGameplayAbility>& StartupAbility: DefaultAbilities)
+		{
+			AbilitySystemComponent->GiveAbility(
+				FGameplayAbilitySpec(StartupAbility,1,static_cast<int32>(StartupAbility.GetDefaultObject()->AbilityInputID),this));
+		}
+	}
+	
+}
+
+void AGOWCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	AbilitySystemComponent->InitAbilityActorInfo(this,this);
+
+	InitializeAttributes();
+	GiveAbilities();
+	
+}
+
+void AGOWCharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+
+	AbilitySystemComponent->InitAbilityActorInfo(this,this);
+
+	InitializeAttributes();
+	if(AbilitySystemComponent&& InputComponent)
+	{
+		const FGameplayAbilityInputBinds Binds
+        ("Confirm",
+            "Cancel",
+            "EGASAbilityInputID",
+            static_cast<int32>(EGASAbilityInputID::Confirm),
+            static_cast<int32>(EGASAbilityInputID::Cancel)
+        );
+
+		AbilitySystemComponent->BindAbilityActivationToInputComponent(InputComponent,Binds);
+	}
+	
+}
 
 void AGOWCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	if (AbilitySystem && AttributeDataTable)
-	{
-		const UAttributeSet* Atts = AbilitySystem->InitStats(UPlayerAttributes::StaticClass(), AttributeDataTable);
-		UE_LOG(LogTemp,Warning,TEXT("BeginPlay"));
-	}
+	
 
-	if (bAttrDebugging)
-	{
-		for (size_t i = 0; i < DebuggingPassiveAbilities.Num(); i++)
-		{
-			FGameplayAbilitySpecHandle SpecHandle = AbilitySystem->GiveAbility(
-				FGameplayAbilitySpec(DebuggingPassiveAbilities[i].GetDefaultObject(), 1, 0));
-			AbilitySystem->CallServerTryActivateAbility(SpecHandle, false, FPredictionKey());
-			UE_LOG(LogTemp,Warning,TEXT("bAttrDebugging"));
-
-		}
-	}
-	for (size_t i = 0; i < StartingPassiveAbilities.Num(); i++)
-	{
-		FGameplayAbilitySpecHandle SpecHandle = AbilitySystem->GiveAbility(
-            FGameplayAbilitySpec(StartingPassiveAbilities[i].GetDefaultObject(), 1, 0));
-		AbilitySystem->CallServerTryActivateAbility(SpecHandle, false, FPredictionKey());
-
-	}
 }
 
 void AGOWCharacter::MoveForward(float Value)

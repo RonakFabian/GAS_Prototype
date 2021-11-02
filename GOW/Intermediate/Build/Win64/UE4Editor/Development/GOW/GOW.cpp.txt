@@ -1,2 +1,0 @@
-E:\GAS_Prototype_GIT\GOW\Intermediate\Build\Win64\UE4Editor\Development\GOW\Definitions.GOW.h
-E:\GAS_Prototype_GIT\GOW\Source\GOW\GOW.h

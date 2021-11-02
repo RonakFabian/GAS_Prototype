@@ -1,8 +1,0 @@
-{
-	"SourceFiles": [
-		"E:\\GAS_Prototype_GIT\\GOW\\Source\\GOW\\GOW.Build.cs",
-		"E:\\GAS_Prototype_GIT\\GOW\\Source\\GOW.Target.cs",
-		"E:\\GAS_Prototype_GIT\\GOW\\Source\\GOWEditor.Target.cs"
-	],
-	"EngineVersion": "4.26.2"
-}

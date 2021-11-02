@@ -75,3 +75,8 @@ DerivedDataCache/*
 *.xml
 *.iml
 *.pdb
+*.response
+*.exp
+*.bin
+GOW/Intermediate
+GOW/Saved

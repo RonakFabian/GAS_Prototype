@@ -36,22 +36,27 @@ public:
 
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Attributes, meta = (AllowPrivateAccess = "true"))
-	class UAbilitySystemComponent* AbilitySystem;
+	class UAbilitySystemComponent* AbilitySystemComponent;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Attributes, meta = (AllowPrivateAccess = "true"))
 	UDataTable* AttributeDataTable;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attributes | Debugging")
-	bool bAttrDebugging;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attributes | Debugging")
-	TArray<TSubclassOf<class UGameplayAbility>> DebuggingPassiveAbilities;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attributes ")
-	TArray<TSubclassOf<class UGameplayAbility>> StartingPassiveAbilities;
 	
+	UPROPERTY()
+	class UGASAttributeSet* Attributes;
+
+	virtual void InitializeAttributes();
+	virtual void GiveAbilities();
+
+	virtual void PossessedBy(AController* NewController) override;
+	virtual void OnRep_PlayerState() override;
+
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Attributes")
+	TSubclassOf<class UGameplayEffect> DefaultAttributeEffect;
 
 	
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Attributes")
+	TArray<TSubclassOf<class UGASGameplayAbility>> DefaultAbilities;
 
 protected:
 
