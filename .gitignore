@@ -80,3 +80,5 @@ DerivedDataCache/*
 *.bin
 GOW/Intermediate
 GOW/Saved
+GOW/Content/ParagonGreystone/*
+GOW/Content/ParagonKhaimera/*
