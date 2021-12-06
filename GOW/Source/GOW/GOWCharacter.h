@@ -9,7 +9,7 @@
 #include "GOWCharacter.generated.h"
 
 UCLASS(config=Game)
-class AGOWCharacter : public ACharacter, public  IAbilitySystemInterface
+class AGOWCharacter : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
@@ -20,7 +20,6 @@ class AGOWCharacter : public ACharacter, public  IAbilitySystemInterface
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
-
 
 
 public:
@@ -34,14 +33,17 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
 
-	
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Attributes, meta = (AllowPrivateAccess = "true"))
 	class UAbilitySystemComponent* AbilitySystemComponent;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Attributes, meta = (AllowPrivateAccess = "true"))
 	UDataTable* AttributeDataTable;
 
-	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category=Combat)
+	bool CombatMode;
+
+
 	UPROPERTY()
 	class UGASAttributeSet* Attributes;
 
@@ -54,19 +56,20 @@ public:
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Attributes")
 	TSubclassOf<class UGameplayEffect> DefaultAttributeEffect;
 
-	
+
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category="Attributes")
 	TArray<TSubclassOf<class UGASGameplayAbility>> DefaultAbilities;
+
 
 protected:
 
 	virtual void BeginPlay() override;
 
 
-	/** Called for forwards/backward input */
+	UFUNCTION(BlueprintCallable)
 	void MoveForward(float Value);
 
-	/** Called for side to side input */
+	UFUNCTION(BlueprintCallable)
 	void MoveRight(float Value);
 
 
@@ -74,7 +77,7 @@ protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	virtual  UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	// End of APawn interface
 
 public:
